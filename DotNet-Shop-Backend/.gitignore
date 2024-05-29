@@ -1,0 +1,122 @@
+# Ignore build output directories
+bin/
+obj/
+
+# User-specific files
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# NUnit
+*.VisualState.xml
+TestResult.xml
+TestResults/
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# JetBrains Rider
+.idea/
+
+# Rider, ReSharper
+.idea/
+*.sln.iml
+.idea/.idea.ICache/
+.idea/dictionaries/
+
+# ReSharper
+_ReSharper*/
+*_ReSharper.Caches/
+
+# Rider
+.idea/
+.idea/.idea.oss/
+.idea/.idea.ICache/
+.idea/workspace.xml
+.idea/workspace.xml.icc.backup/
+.idea/misc.xml
+.idea/libraries
+.idea/caches
+.idea/workspace
+.idea/scopes
+.idea/dictionaries/
+.idea/shelf/
+.idea/compiler.xml
+.idea/uiDesigner.xml
+.idea/viewMaps.xml
+.idea/usage.statistics.xml
+.idea/filetypes.xml
+.idea
+
+# ASP.NET temporary files
+*.LocalHistory
+[Ll]og/
+[Tt]emp/
+
+# Entity Framework
+*.edmx.diagram
+*.edmx.sql
+*.edmx.txt
+
+# IIS Express
+/.vs
+/.vs/*/slnx.sqlite
+/.vs/*/v15/.suo
+/.vs/config/applicationhost.config
+
+# SQL Server files
+*.mdf
+*.ldf
+
+# Visual Studio 2019 and later
+.vs/
+.vscode/
+
+# Packages
+*.nupkg
+*.snupkg
+*.symbols.nupkg
+
+# Ignore packages folder
+packages/
+
+# MuMerchAPI specific ignores
+MuMerchAPI/bin/
+MuMerchAPI/obj/
+
+# BLL specific ignores
+BLL/bin/
+BLL/obj/
+
+# DAL specific ignores
+DAL/bin/
+DAL/obj/
