@@ -10,13 +10,23 @@ using System.Xml.Linq;
 
 namespace DAL.Repos
 {
-    internal class UserRepo : BaseRepo, IBaseRepo<User, int, string, User>, IAuth<bool, string, string>
+    internal class UserRepo : BaseRepo, IBaseRepo<User, int, string, User>, IAuth<Object, string, string>
     {
-        public bool Authenticate(string username, string password)
+        public Object Authenticate(string username, string password)
         {
-            var data = mmContext.Users.SingleOrDefault(u=>u.Username.Equals(username) && u.Password.Equals(password));
-            if(data!=null) return true;
-            return false;
+            var data = mmContext.Users
+                        .Where(u => u.Username.Equals(username) && u.Password.Equals(password))
+                        .Select(u => new
+                        {
+                            u.Name,
+                            u.Username,
+                            u.Email,
+                            u.PhoneNo,
+                            u.UserType
+                        })
+                        .SingleOrDefault();
+            if (data!=null) return data;
+            return null;
         }
 
         public int Delete(User user)

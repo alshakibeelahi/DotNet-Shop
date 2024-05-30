@@ -25,7 +25,7 @@ namespace BLL.Services
 
         public static ColorDTO GetByName(string name)
         {
-            var data = DataAccess.ColorByNameContent().GetByName(name);
+            var data = DataAccess.ColorByNameContent().GetBySearchCredentials(name);
             return Convert(data);
         }
 

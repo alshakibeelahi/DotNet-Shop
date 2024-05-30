@@ -12,7 +12,7 @@ using System.Web.Http.Cors;
 
 namespace MuMerchAPI.Controllers
 {
-    [EnableCors("*", "*", "*")]
+    [EnableCors("http://localhost:4000", "*", "*")]
     public class OrderController : ApiController
     {
         [HttpGet]
@@ -49,16 +49,51 @@ namespace MuMerchAPI.Controllers
         {
             try
             {
-                var orderData = new OrderDTO
+                foreach (var productOrderMap in order.ProductOrderMaps)
+                {
+                    var checkProduct = new ProductColorSizeMapDTO
+                    {
+                        ColorId = productOrderMap.ColorId,
+                        SizeId = productOrderMap.SizeId,
+                        ProductId = productOrderMap.ProductId,
+                        Quantity = productOrderMap.OrderedQuantity
+                    };
+                    var availableProduct = ProductColorSizeMapService.GetProductAvailability(checkProduct);
+                    if (availableProduct == null)
+                    {
+                        return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Product not available");
+                    }
+                }
+                    var orderData = new OrderDTO
                 {
                     OrderStatus = "Pending",
                     PaymentStatus = "Pending",
+                    ContactNumber = order.ContactNumber,
+                    ShippingAddress = order.ShippingAddress,
                     UserId = order.UserId,
                 };
                 var orderId = OrderService.Add(orderData);
 
                 foreach (var productOrderMap in order.ProductOrderMaps)
                 {
+                    var checkProduct = new ProductColorSizeMapDTO
+                    {
+                        ColorId = productOrderMap.ColorId,
+                        SizeId = productOrderMap.SizeId,
+                        ProductId = productOrderMap.ProductId,
+                        Quantity = productOrderMap.OrderedQuantity
+                    };
+                    var availableProduct = ProductColorSizeMapService.GetProductAvailability(checkProduct);
+                    if (availableProduct == null) {
+                        OrderService.Delete(new OrderDTO
+                        {
+                            OrderStatus = "Pending",
+                            PaymentStatus = "Pending",
+                            UserId = order.UserId,
+                            Id = orderId
+                        });
+                        return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Product not available");
+                    }
                     // Check if required fields are not empty
                     if (string.IsNullOrEmpty(productOrderMap.ProductName) ||
                         string.IsNullOrEmpty(productOrderMap.Size) ||

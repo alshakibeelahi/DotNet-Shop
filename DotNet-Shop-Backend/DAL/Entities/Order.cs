@@ -12,6 +12,8 @@ namespace DAL.Entities
         public int Id { get; set; }
         public string OrderStatus { get; set; }
         public string PaymentStatus { get; set; }
+        public string ShippingAddress { get; set; }
+        public string ContactNumber { get; set; }
         [ForeignKey("User")]
         public string UserId { get; set; }
         public virtual User User { get; set; }

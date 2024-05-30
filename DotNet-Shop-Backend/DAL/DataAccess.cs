@@ -9,7 +9,7 @@ namespace DAL
 {
     public class DataAccess
     {
-        public static IAuth<bool,string,string> AuthContent()
+        public static IAuth<Object,string,string> AuthContent()
         {
             return new UserRepo();
         }
@@ -21,14 +21,19 @@ namespace DAL
         {
             return new UserRepo();
         }
-        public static ISearchByName<Color, string> ColorByNameContent()
+        public static IDetailedSearch<Color, string> ColorByNameContent()
         {
             return new ColorRepo();
         }
 
-        public static ISearchByName<Size, string> SizeByNameContent()
+        public static IDetailedSearch<Size, string> SizeByNameContent()
         {
             return new SizeRepo();
+        }
+
+        public static IDetailedSearch<ProductColorSizeMap, ProductColorSizeMap> ProductColorSizeSearchContent()
+        {
+            return new ProductColorSizeMapRepo();
         }
 
         public static IBaseRepo<Color, int, int, Color> ColorContent()

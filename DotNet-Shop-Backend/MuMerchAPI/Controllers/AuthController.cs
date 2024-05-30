@@ -12,7 +12,7 @@ using System.Web.Services.Description;
 
 namespace MuMerchAPI.Controllers
 {
-    [EnableCors("*","*","*")]
+    [EnableCors("http://localhost:4000", "*","*")]
     public class AuthController : ApiController
     {
         [HttpPost]

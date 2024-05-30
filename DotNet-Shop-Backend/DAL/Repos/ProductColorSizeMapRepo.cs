@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repos
 {
-    internal class ProductColorSizeMapRepo : BaseRepo, IBaseRepo<ProductColorSizeMap, int, int, ProductColorSizeMap>, IGetForeignKeyDetails<List<ProductColorSizeMap>, ProductColorSizeMap, int>
+    internal class ProductColorSizeMapRepo : BaseRepo, IBaseRepo<ProductColorSizeMap, int, int, ProductColorSizeMap>, IGetForeignKeyDetails<List<ProductColorSizeMap>, ProductColorSizeMap, int>, IDetailedSearch<ProductColorSizeMap, ProductColorSizeMap>
     {
         public List<ProductColorSizeMap> GetAll()
         {
@@ -18,6 +18,17 @@ namespace DAL.Repos
         public ProductColorSizeMap GetById(int id)
         {
             return mmContext.ProductColorSizeMaps.Find(id);
+        }
+
+        public ProductColorSizeMap GetBySearchCredentials(ProductColorSizeMap data)
+        {
+            var result = mmContext.ProductColorSizeMaps
+                        .Where(item => item.ProductId == data.ProductId &&
+                            item.ColorId == data.ColorId &&
+                            item.SizeId == data.SizeId &&
+                            item.Quantity > data.Quantity)
+                            .FirstOrDefault();
+            return result;
         }
 
         public List<ProductColorSizeMap> GetAllWithDetails()

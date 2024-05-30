@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repos
 {
-    internal class SizeRepo : BaseRepo, IBaseRepo<Size, int, int, Size>, ISearchByName<Size, string>
+    internal class SizeRepo : BaseRepo, IBaseRepo<Size, int, int, Size>, IDetailedSearch<Size, string>
     {
         public int Delete(Size size)
         {
@@ -23,7 +23,7 @@ namespace DAL.Repos
             return mmContext.Sizes.ToList();
         }
 
-        public Size GetByName(string name)
+        public Size GetBySearchCredentials(string name)
         {
             var sizeData = mmContext.Sizes.FirstOrDefault(c => c.Name == name);
             if (sizeData == null)

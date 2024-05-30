@@ -10,7 +10,7 @@ using System.Web.Http.Cors;
 
 namespace MuMerchAPI.Controllers
 {
-    [EnableCors("*", "*", "*")]
+    [EnableCors(origins: "http://localhost:4000", headers:"*", methods:"*")]
     public class UserController : ApiController
     {
         [Route("api/user/all")]
@@ -47,6 +47,11 @@ namespace MuMerchAPI.Controllers
         {
             try
             {
+                var existingUsername = UserService.Get(userDTO.Username);
+                if (existingUsername != null)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.Conflict, "User is already taken");
+                }
                 var data = UserService.Add(userDTO);
                 return Request.CreateResponse(HttpStatusCode.OK, data);
             }

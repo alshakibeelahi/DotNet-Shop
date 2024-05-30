@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repos
 {
-    internal class ColorRepo : BaseRepo, IBaseRepo<Color, int, int, Color>, ISearchByName<Color, string>
+    internal class ColorRepo : BaseRepo, IBaseRepo<Color, int, int, Color>, IDetailedSearch<Color, string>
     {
         public List<Color> GetAll()
         {
@@ -20,7 +20,7 @@ namespace DAL.Repos
             return mmContext.Colors.Find(id);
         }
 
-        public Color GetByName(string name)
+        public Color GetBySearchCredentials(string name)
         {
             var colorData = mmContext.Colors.FirstOrDefault(c => c.Name == name);
             if (colorData == null)

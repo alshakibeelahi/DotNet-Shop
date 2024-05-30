@@ -52,6 +52,8 @@ namespace BLL.Services
             {
                 OrderStatus = order.OrderStatus,
                 PaymentStatus = order.PaymentStatus,
+                ShippingAddress = order.ShippingAddress,
+                ContactNumber = order.ContactNumber,
                 UserId = order.UserId,
             };
         }

@@ -37,7 +37,7 @@ namespace BLL.Services
 
         public static SizeDTO GetByName(string name)
         {
-            var data = DataAccess.SizeByNameContent().GetByName(name);
+            var data = DataAccess.SizeByNameContent().GetBySearchCredentials(name);
             var cfg = new MapperConfiguration(c => {
                 c.CreateMap<Size, SizeDTO>();
             });

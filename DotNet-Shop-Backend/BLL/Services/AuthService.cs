@@ -13,10 +13,10 @@ namespace BLL.Services
 {
     public class AuthService
     {
-        public static TokenDTO Autheticate(string id, string password)
+        public static Object Autheticate(string id, string password)
         {
             var data = DataAccess.AuthContent().Authenticate(id, password);
-            if (data)
+            if (data!=null)
             {
                 var token = new Token();
                 token.UserId = id;
@@ -30,7 +30,11 @@ namespace BLL.Services
                         c.CreateMap<Token, TokenDTO>();
                     });
                     var mapper = new Mapper(cfg);
-                    return mapper.Map<TokenDTO>(res);
+                    return new
+                    {
+                        token = mapper.Map<TokenDTO>(res),
+                        userData = data
+                    };
                 }
             }
             return null;

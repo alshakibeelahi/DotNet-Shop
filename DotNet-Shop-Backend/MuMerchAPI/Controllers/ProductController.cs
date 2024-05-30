@@ -15,7 +15,7 @@ using System.Diagnostics;
 
 namespace MuMerchAPI.Controllers
 {
-    [EnableCors("*", "*", "*")]
+    [EnableCors(origins: "http://localhost:4000", headers: "*", methods: "*")]
     public class ProductController : ApiController
     {
         private static readonly string RootDirectory = HttpContext.Current.Server.MapPath("~/Uploads");
@@ -158,7 +158,7 @@ namespace MuMerchAPI.Controllers
                 }
 
                 // Generate the file URL
-                string serverIp = "https://localhost:44377/"; // Replace with your server's IP address
+                string serverIp = "http://localhost:44377/"; // Replace with your server's IP address
                 string imageUrl = $"{serverIp}/Uploads/{myFileName}";
                 productDTO.Image = imageUrl;
 

@@ -64,23 +64,12 @@
     <Compile Include="Interfaces\IAuth.cs" />
     <Compile Include="Interfaces\IBaseRepo.cs" />
     <Compile Include="Interfaces\IGetForeignKeyDetails.cs" />
+    <Compile Include="Interfaces\IDeleteById.cs" />
     <Compile Include="Interfaces\IReport.cs" />
-    <Compile Include="Interfaces\ISearchByName.cs" />
-    <Compile Include="Migrations\202405261801292_db-init.cs" />
-    <Compile Include="Migrations\202405261801292_db-init.Designer.cs">
-      <DependentUpon>202405261801292_db-init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405270456570_db-update.cs" />
-    <Compile Include="Migrations\202405270456570_db-update.Designer.cs">
-      <DependentUpon>202405270456570_db-update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405281435161_PRODUCT_TABLE_UPDATED.cs" />
-    <Compile Include="Migrations\202405281435161_PRODUCT_TABLE_UPDATED.Designer.cs">
-      <DependentUpon>202405281435161_PRODUCT_TABLE_UPDATED.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202405281735340_order-updated.cs" />
-    <Compile Include="Migrations\202405281735340_order-updated.Designer.cs">
-      <DependentUpon>202405281735340_order-updated.cs</DependentUpon>
+    <Compile Include="Interfaces\IDetailedSearch.cs" />
+    <Compile Include="Migrations\202405300804275_dbinit.cs" />
+    <Compile Include="Migrations\202405300804275_dbinit.Designer.cs">
+      <DependentUpon>202405300804275_dbinit.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MMContext.cs" />
@@ -103,17 +92,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202405261801292_db-init.resx">
-      <DependentUpon>202405261801292_db-init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405270456570_db-update.resx">
-      <DependentUpon>202405270456570_db-update.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405281435161_PRODUCT_TABLE_UPDATED.resx">
-      <DependentUpon>202405281435161_PRODUCT_TABLE_UPDATED.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202405281735340_order-updated.resx">
-      <DependentUpon>202405281735340_order-updated.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202405300804275_dbinit.resx">
+      <DependentUpon>202405300804275_dbinit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

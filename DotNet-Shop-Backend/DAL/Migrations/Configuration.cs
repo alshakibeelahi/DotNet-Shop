@@ -17,6 +17,11 @@
         {
             if (!context.Users.Any(u => u.Username == "admin"))
             {
+                context.ProductOrderMaps.RemoveRange(context.ProductOrderMaps);
+                context.Orders.RemoveRange(context.Orders);
+                context.Users.RemoveRange(context.Users);
+
+                context.SaveChanges();
                 context.Users.AddOrUpdate(
                     new User
                     {

@@ -34,6 +34,14 @@ namespace BLL.Services
             var data = DataAccess.ProductColorMapContent().GetById(id);
             return Convert(data);
         }
+
+        public static ProductColorSizeMapDTO GetProductAvailability(ProductColorSizeMapDTO checkProduct)
+        {
+            var data = Convert(checkProduct);
+            var result = DataAccess.ProductColorSizeSearchContent().GetBySearchCredentials(data);
+            return Convert(result);
+        }
+
         public static int Add(ProductColorSizeMapDTO dto)
         {
             var data = Convert(dto);

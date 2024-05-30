@@ -10,7 +10,7 @@ using System.Web.Http.Cors;
 
 namespace MuMerchAPI.Controllers
 {
-        [EnableCors("*", "*", "*")]
+        [EnableCors("http://localhost:4000", "*", "*")]
         public class ColorController : ApiController
         {
             [HttpGet]
