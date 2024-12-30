@@ -1,1 +1,1 @@
-# melangi-dashboard
+# dotnet-shop-dashboard
